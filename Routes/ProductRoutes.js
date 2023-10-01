@@ -152,10 +152,11 @@ router.put("/deleteProd/:id",async(req,res)=>
 });
 
 //LowStock
-router.get("/lowstock", async(req,res)=>
+router.get("/lowstock/:category", async(req,res)=>
 {
+    cat = req.params.category
     try{
-        const products= await Product.find({LowStockFlag: req.body.Qty < 10 ? "true" : true})
+        const products= await Product.find({LowStockFlag: req.body.Qty < 10 ? "true" : true, Category:cat})
         res.status(200).json(
         {
             success:true,
