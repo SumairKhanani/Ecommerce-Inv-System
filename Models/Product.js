@@ -11,7 +11,10 @@ const ProductSchema = new mongoose.Schema({
         type: String
     },
     Description: String,
-    Category: String,
+    Category: {
+        type: String,
+        enum: ["Lifestyle", "Accessories"]
+    },
     Price:{
         type: Number
     },
